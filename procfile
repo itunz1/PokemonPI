@@ -1,0 +1,2 @@
+backend: backend/npm start
+frontend: frontend/npm start

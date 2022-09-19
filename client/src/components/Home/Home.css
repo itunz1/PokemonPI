@@ -1,0 +1,20 @@
+.cartas {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.linkPoke {
+    width: calc(50% - 1rem);
+    
+}
+
+@media screen and (min-width: 767px) {
+    .cartas {
+        gap: 4rem;
+    }
+    .linkPoke {
+        width: calc(33.3% - 4rem);
+    }
+}

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginado from '../Paginado/Paginado';
+import './Home.css'
 
 
 
@@ -30,7 +31,7 @@ function Home() {
   }
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [pokemonsPerPage] = useState(12);
+  const [pokemonsPerPage] = useState(9);
   const lastPokemon = currentPage * pokemonsPerPage;
   const firstPokemon = lastPokemon - pokemonsPerPage;
   let currentPokemons = allPokemons.slice(firstPokemon, lastPokemon);
@@ -41,37 +42,37 @@ function Home() {
   return (
     <div>
       <h1> POKEMON API </h1>
-      <button onClick={(e) => {handleClick(e)}}>
+      <button onClick={(e) => { handleClick(e) }}>
         Cargar todos los Pokemons
       </button>
-      <SearchBar/>
+      <SearchBar />
 
       <div>
-         <div>
-        {allPokemons && (
-          <Paginado
-            pokemonsPerPage={pokemonsPerPage}
-            allPokemons={allPokemons.length}
-            paginado={paginado}/>)}
+        <div>
+          {allPokemons && (
+            <Paginado
+              pokemonsPerPage={pokemonsPerPage}
+              allPokemons={allPokemons.length}
+              paginado={paginado} />)}
         </div>
-        <div> 
-      {currentPokemons?.map((el, i) => {
-        return (
-          <>
-            <Link to={`/pokemon/${el.id}`}>
-          <div key= {i}>
-              <Card
-                key={i}
-                name={el.name}
-                image={el.image}
-                types={el.types}
-              />
-          </div>
-            </Link>
-          </>
-        );
-      })}
-      </div>
+        <div className='cartas'>
+          {currentPokemons?.map((el, i) => {
+            return (
+              <>
+                <Link className='linkPoke' key={el.id} to={`/pokemon/${el.id}`}>
+                  
+                    <Card
+                      key={i}
+                      name={el.name}
+                      image={el.image}
+                      types={el.types}
+                    />
+                
+                </Link>
+              </>
+            );
+          })}
+        </div>
 
       </div>
 

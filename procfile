@@ -1,2 +1,2 @@
-backend: backend/npm start
-frontend: frontend/npm start
+api: api/npm start
+client: client/npm start

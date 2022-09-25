@@ -71,7 +71,7 @@ export const getTypes = () => {
   
         return pokemonCreate;
       } catch (error) {
-        alert(error);
+        alert("No se pudo crear pokemon faltan datos");
       }
     };
   }

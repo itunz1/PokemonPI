@@ -84,7 +84,9 @@ router.delete('/:id', async (req, res) => {
     try{
       deletePoke.filter((ele, index) => {
         if(ele.id === id){
-          deletePoke.splice(index,  1)
+          Pokemon.destroy({
+            where : {id : id}
+          })
         }
       })
       res.json(deletePoke)

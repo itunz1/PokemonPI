@@ -7,14 +7,12 @@ import {
   filerByName,
   filterByAttack,
   filterByType,
-  filterCreate,
-  
-} from '../../redux/actions/index';
-import { Link } from "react-router-dom";
+  filterCreate, } from '../../redux/actions/index';
 import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginado from '../Paginado/Paginado';
 import Loading from '../Loading/Loading';
+import pokedex from './pokedeex.png'
 import './Home.css'
 
 
@@ -90,7 +88,7 @@ function Home() {
 
   return (
     <div className='back'>
-      <h1> POKEMON API </h1>
+      <img src={pokedex} alt="Img not found"/>
       <button className='load-btn' onClick={(e) => { handleClick(e) }}>
         Cargar todos los Pokemons
       </button>

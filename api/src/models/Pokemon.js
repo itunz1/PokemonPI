@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
         hp: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            valite: {
+            validate: {
                 min: 0,
                 max: 255,
             },
@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
         attack: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            valite: {
+            validate: {
                 min: 0,
                 max: 255,
             },
@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
         defense: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            valite: {
+            validate: {
                 min: 0,
                 max: 255,
             },
@@ -48,10 +48,19 @@ module.exports = (sequelize) => {
         speed: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            valite: {
+            validate: {
                 min: 0,
                 max: 255,
             },
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        createInData: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true,
         },
     });
 };

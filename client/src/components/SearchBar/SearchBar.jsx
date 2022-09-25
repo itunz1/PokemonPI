@@ -1,32 +1,33 @@
 import React from 'react';
-import {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {searchByName} from '../../redux/actions/index'
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { searchByName } from '../../redux/actions/index'
+import './SearchBar.css';
 
-export default function SearchBar(){
+export default function SearchBar() {
     const dispatch = useDispatch();
-    const [name, setName] = useState('');
+    const [state, setState] = useState('');
 
-    function handleInputChange(e){
+    function handleInputChange(e) {
         e.preventDefault();
-        setName(e.target.value);
+        setState(e.target.value);
     }
 
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault();
-        dispatch(searchByName(name));
-        setName(''); 
+        dispatch(searchByName(state));
+        console.log(state)
+        setState('');
     }
 
-
-    return(
-        <div >
-            <input onChange={(e) => handleInputChange(e)} type= 'text' placeholder='Ingresar nombre...' value= {name}/>
-
-            <button onClick={(e) => handleSubmit(e)} type= 'submit'
+    return (
+        <div className='search-pos'>
+            <input className='input-search' name='name' onChange={(e) => handleInputChange(e)} type='text'
+                placeholder='Ingresar nombre...' value={state} />
+            <button className='search-btn' onClick={(e) => handleSubmit(e)} type='submit'
             >Buscar
             </button>
-            
+
         </div>
     )
 }

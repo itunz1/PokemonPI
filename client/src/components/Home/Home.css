@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     padding: 1rem;
     gap: 1rem;
+    justify-content: center;
 }
 
 .linkPoke {
@@ -12,9 +13,35 @@
 
 @media screen and (min-width: 767px) {
     .cartas {
-        gap: 4rem;
+        gap: 3rem;
+        justify-content: center;
     }
     .linkPoke {
-        width: calc(33.3% - 4rem);
+        width: calc(33.3% - 10rem);
     }
+}
+
+.back {
+    background-color: #f2f2f2;
+    min-height: 100vh;
+    padding: 1rem 0;
+}
+
+.selector {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.selector-az {
+    display: block;
+    margin: 0.3rem auto 0 auto;
+}
+
+.letters p {
+    font-weight: bold
+}
+
+.load-btn {
+    display: none;
 }

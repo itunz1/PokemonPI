@@ -12,7 +12,7 @@
 .fullpokedex {
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   overflow: hidden;
   margin: 0;
   font-family: system-ui;
@@ -22,8 +22,8 @@
   perspective: 1000px;
   position: relative;
   overflow: hidden;
-  height: 31rem;
-  width: 23rem;
+  height: 40rem;
+  width: 33rem;
   margin: 0 auto;
   overflow: initial;
   box-shadow: 0 2px 12px -2px rgba(255, 0, 0, 0.4);
@@ -32,7 +32,7 @@
 .details {
   display: flex;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 0 4rem;
 }
 
 .details img{
@@ -135,11 +135,12 @@
 .pokedex-screen-container {
   background: #ffffff;
   border-radius: 10px 10px 0 0;
-  border: 1px solid black;
   margin: 20px 0;
   height: 50%;
   padding: .8rem;
+  border: 5px solid gray
 }
+
 .pokedex-screen {
   background: white;
   border: 2px solid black;
@@ -148,126 +149,51 @@
   display: flex;
   align-items: center;
 }
-.pokemon-info{
-  padding: 0.8rem;
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: 40% calc(60% - 0.8rem);
-  grid-template-rows: 35px 1fr;
-  grid-column-gap: 0.8rem;
-  grid-row-gap: 0.8rem;
-  grid-template-areas:
-    "title title"
-    "img   stats";
-}
-.pokemon-name{
-  text-align: center;
-  text-transform: capitalize;
-  grid-area: title;
-  font-weight: 700;
-}
+
 .pokemon-img{
   width: 100%;
   transform: scale(1.2);
   align-self: center;
   grid-area: img;
 }
-.pokemon-stats{
-  grid-area: stats;
-}
-.pokemon-stat{
-  font-size: 0.9rem;
-}
-.pokedex-no-screen{
-  width: 100%;
-  height: 100%;
-}
-.stat-name{
-  text-transform: capitalize;
-}
 
-.btn-id {
-  display: inline-block;
-  margin-top: 30px;
-}
 
-/*---------------------*/
-/* Pokedex Form */
-/*---------------------*/
-.pokemon-form {
-  display: grid;
-  grid-template-columns: 1fr 50px;
-  column-gap: .5rem;
-  margin-top: 1em;
-}
-
-.pokemon-input{
-  font-family: system-ui;
-  padding: 10px;
-  background-color: var(--orange);
-  border: none;
-  border: 1px solid black;
-  border-radius: 10px;
-  outline: 0;
-  font-size: 1em;
-  flex-grow: 1;
-  transition: .2s;
-}
-.pokemon-input:focus {
-  border-color: #ffffff;
-}
-
-.pokemon-input:focus::-webkit-input-placeholder{
-  color: rgba(255,255,255, 1);
-
-}
-.pokemon-input::-webkit-input-placeholder {
-  color: rgba(255,255,255, .8);
-}
-
-.pokemon-btn{
-  border-radius: 50%;
-}
-
-.pokemon-btn {
-  width: 40px;
-  height: 40px;
-  position: relative;
-  background: radial-gradient(hsl(0, 100%, 70%), hsl(0, 97%, 25%)); /* Standard syntax */
-  text-shadow: 0 -1px 0 #c30707;
-  color: white;
-  border: solid 1px hsl(0, 100%, 20%);
-  border-radius: 100%;
+.btn-back {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
   z-index: 1;
-
-  outline: none;
-
-  box-shadow: inset 0 .5px   0 hsl(0, 100%, 50%),
-                    0 1px 0 hsl(0, 100%, 20%),
-                    0 1.5px   0 hsl(0, 100%, 18%),
-                    0 2px 0 hsl(0, 100%, 16%),
-                    0 2.5px   0 hsl(0, 100%, 14%),
-                    0 3px 0 hsl(0, 100%, 12%),
-                    0 3.5px   0 hsl(0, 100%, 10%),
-                    0 4px 0 hsl(0, 100%, 8%),
-                    0 4.5px   0 hsl(0, 100%, 6%);
-}
-
-.pokemon-btn:hover {
-  background: radial-gradient(hsl(0, 100%, 70%), hsl(0, 97%, 35%)); /* Standard syntax */
-}
-
-.pokemon-btn:active {
-  background: radial-gradient(hsl(0, 100%, 80%), hsl(0, 100%, 45%)); /* Standard syntax */
-
-  top: 2px;
-
-  box-shadow: inset 0 .5px 0 hsl(0, 100%, 50%),
-                    0 1px 0 hsl(0, 100%, 20%),
-                    0 1.5px 0 hsl(0, 100%, 18%),
-                    0 2px 0 hsl(0, 100%, 16%),
-                    0 2.5px 0 hsl(0, 100%, 14%),
-                    0 3px 0 hsl(0, 100%, 12%),
-                    0 3.5px 0 hsl(0, 100%, 10%);
-}
-
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+  margin-top: 20px;
+ }
+ 
+ .btn-back::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .btn-back:hover {
+  color: #e8e8e8;
+ }
+ 
+ .btn-back:hover::before {
+  width: 100%;
+ }

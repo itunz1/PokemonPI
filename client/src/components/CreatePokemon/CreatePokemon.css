@@ -1,5 +1,5 @@
 .input {
-    width: 70%;
+    width: 43%;
     height: 44px;
     background-color: #05060f0a;
     border-radius: .5rem;
@@ -8,6 +8,11 @@
     font-size: 1rem;
     -webkit-transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
     transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+  }
+
+  .input::placeholder { 
+    opacity: 0.3;
+    font-size: 0.7rem;
   }
   
   .label {
@@ -39,7 +44,7 @@
     flex-wrap: wrap;
   }
 
-  .form-create div {
+  .form-create > div {
     width: 50%;
   }
 
@@ -88,3 +93,86 @@
    .btn:hover::before {
     width: 100%;
    }
+
+   .type {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   }
+
+   .filter-option .filter:not(:last-child) {
+    margin-right: 1rem;
+   }
+
+   .filter-option{
+    margin-top: 0.5rem;
+   }
+
+   .filter button{
+    margin-left: 0.3rem;
+   }
+
+   .img-create {
+    width: 15%;
+   }
+
+   .danger {
+    color: red;
+    font-size: 13px;
+    margin-top: 0;
+  }
+
+.label-type {
+  height: 100%;
+  width: 100%;
+}
+  
+.types-btn {
+  padding: 1px 13px;
+  border: unset;
+  border-radius: 10px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .types-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  -webkit-transition: all 250ms;
+  transition: all 250ms
+ }
+ 
+ .types-btn:hover {
+  color: #e8e8e8;
+ }
+ 
+ .types-btn:hover::before {
+  width: 100%;
+ }
+
+ .span-letters{
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 3px 4px 4px 3px;
+ }

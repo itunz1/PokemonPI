@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../redux/actions/index';
 import './PokemonDetail.css'
 import { Link } from 'react-router-dom'
+import Loading from '../Loading/Loading';
 
 function PokemonDetail(props) {
 
@@ -17,6 +18,11 @@ function PokemonDetail(props) {
     dispatch(getDetail(id))
   }, [dispatch, id])
 
+  const loading = useSelector((state) => state.loading);
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className='fullpokedex'>
     <div className="pokedex">
@@ -28,14 +34,16 @@ function PokemonDetail(props) {
           <div className="light is-green" />
         </div>
         <div className="pokedex-screen-container">
-          <h3>{pokeDetail.name}</h3>
+          <h3>{pokeDetail.name} #{pokeDetail.id}</h3>
+          {console.log(pokeDetail)}
           <div className='details'>
             <img src={pokeDetail.image} alt="img Not Found" />
-            <div>
+            <div className='letters'>
               <p>HP: {pokeDetail.hp}</p>
               <p>Attack: {pokeDetail.attack}</p>
               <p>Defense: {pokeDetail.defense}</p>
               <p>Speed: {pokeDetail.speed}</p>
+              <p>Type: {pokeDetail.types?.join(" - ")}</p>
             </div>
             </div>
 
@@ -48,20 +56,11 @@ function PokemonDetail(props) {
             </div>
           </div>
           <Link to='/home'>
-            <button className="btn-id">volver</button>
+            <button className="btn-back">volver</button>
           </Link>
         </div>
       </div>
       </div>
-
-    // <div>
-    //     <h3>{pokeDetail.name}</h3>
-    //     <img src={pokeDetail.image} alt="img Not Found" />
-    //     <p>HP: {pokeDetail.hp}</p>
-    //     <p>Attack: {pokeDetail.attack}</p>
-    //     <p>Defense: {pokeDetail.defense}</p>
-    //     <p>Speed: {pokeDetail.speed}</p>
-    // </div>
       )
 }
 

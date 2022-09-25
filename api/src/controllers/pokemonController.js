@@ -109,7 +109,7 @@ const getPokemonByNameDb = async (name) => {
     )
     return pokemonsDb2Filter
   }catch (error) {
-    return 'Pokemon no encontrado'
+    return 'Error de DB Pokemon no encontrado'
   }
 }
 
@@ -153,5 +153,6 @@ module.exports = {
   getPokemonByIdDb,
   getPokemonByNameApi,
   getPokemonByNameDb,
-  getAllPoke
+  getAllPoke,
+  getPokemonDb,
 }

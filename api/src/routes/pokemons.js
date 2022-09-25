@@ -5,7 +5,8 @@ const {
   getPokemonByIdDb,
   getPokemonByNameApi,
   getPokemonByNameDb,
-  getAllPoke
+  getAllPoke,
+  getPokemonDb,
 } = require('../controllers/pokemonController')
 const { Pokemon, Type } = require('../db')
 const router = Router()
@@ -60,56 +61,36 @@ router.get('/:id', async (req, res) => {
 //          POST POKEMON         
 
 router.post('/', async (req, res) => {
+  const { name, height, weight, hp, attack, speed, defense, types, image, createInData } = req.body;
+  let pokes = await getAllPoke();
   try {
-    let {
-      name,
-      types,
-      hp,
-      attack,
-      defense,
-      speed,
-      height,
-      weight,
-      image,
-      createInDb,
-    } = req.body
+      if (pokes.filter(p => p.name === name).length === 0) {
+          const newPoke = await Pokemon.create({ name, height, weight, hp, attack, speed, image, defense, createInData});
+          const t = await Type.findAll({ where: { name: types } });
+          await newPoke.addType(t);
+          res.json(newPoke)
+      } else {
+          throw new Error('pokemon ya existe');
+      }
 
-    let allPokemons = await getAllPoke()
+  } catch (e) {
+      res.status(400).json(e.message);
+  };
+})
 
-    let repeatPokemon = allPokemons.filter(
-      (e) => e.name.toLowerCase() === name.toLowerCase(),
-    )
-
-    if (repeatPokemon.length) {
-      res.status(400).send('Ya existe un Pokemon con ese nombre')
-    } else {
-      const newPokemon = await Pokemon.create({
-        name,
-        hp,
-        attack,
-        defense,
-        speed,
-        height,
-        weight,
-        image,
-        createInDb,
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params
+    let deletePoke = await getAllPoke();
+    try{
+      deletePoke.filter((ele, index) => {
+        if(ele.id === id){
+          deletePoke.splice(index,  1)
+        }
       })
-
-      types.map(async (t) => {
-        const newType = await Type.findAll({
-          where: {
-            name: t,
-          },
-        })
-        newPokemon.addType(newType[0])
-      })
-
-      res.status(200).send('Pokemon agregado con exito')
+      res.json(deletePoke)
+    }catch(err){
+      res.status(400).json(err)
     }
-  } catch (error) {
-    console.log('soy el error de post', error)
-    res.status(404).send('No se pudo agregar pokemon')
-  }
 })
 
 module.exports = router

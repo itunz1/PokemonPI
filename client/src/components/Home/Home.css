@@ -22,7 +22,7 @@
 }
 
 .back {
-    background-color: #f2f2f2;
+    background-color: white;
     min-height: 100vh;
     padding: 1rem 0;
 }
@@ -31,6 +31,7 @@
     display: flex;
     justify-content: center;
     gap: 5rem;
+    
 }
 
 .selector-az {

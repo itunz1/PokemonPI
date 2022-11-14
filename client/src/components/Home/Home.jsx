@@ -46,13 +46,14 @@ function Home() {
   useEffect(() => {
     dispatch(getPokemons());
     dispatch(getTypes());
+    return console.log("se desmonto")
   }, [dispatch]);
 
 
-  function handleClick(e) {
-    e.preventDefault();
-    dispatch(getPokemons());
-  }
+  // function handleClick(e) {
+  //   e.preventDefault();
+  //   dispatch(getPokemons());
+  // }
 
   function handleType(e) {
     e.preventDefault();
@@ -89,9 +90,9 @@ function Home() {
   return (
     <div className='back'>
       <img src={pokedex} alt="Img not found"/>
-      <button className='load-btn' onClick={(e) => { handleClick(e) }}>
+      {/* <button className='load-btn' onClick={(e) => { handleClick(e) }}>
         Cargar todos los Pokemons
-      </button>
+      </button> */}
 
       <SearchBar />
 

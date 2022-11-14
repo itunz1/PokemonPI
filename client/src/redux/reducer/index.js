@@ -26,7 +26,6 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: action.payload,
-        
       };
     case "GET_DETAIL":
       return {
@@ -68,7 +67,6 @@ function rootReducer(state = initialState, action) {
         return{
           ...state,
           pokemons: orderPokemon,
-          
         }
         case "FILTER_BY_ATTACK":
           const allPokeAttack = state.pokemons
@@ -131,7 +129,7 @@ function rootReducer(state = initialState, action) {
         case "LOADING":
             return{
               ...state,
-              loading: true
+              loading: true,
             }
         default:
           return state;

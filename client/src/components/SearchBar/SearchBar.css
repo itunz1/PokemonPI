@@ -4,7 +4,7 @@
     background-color: white;
     border-radius: .5rem;
     padding: 0 1rem;
-    border: 2px solid transparent;
+    border: 2px solid #35439e;
     font-size: 1rem;
     -webkit-transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
     transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;

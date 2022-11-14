@@ -13,6 +13,7 @@ function CreatePokemon() {
 
     const types = useSelector(state => state.allTypes);
 
+
     const [state, setState] = useState({
         name: "",
         types: [],
@@ -78,14 +79,14 @@ function CreatePokemon() {
         } else if (state.weight < 1 || state.weight > 255) {
             errors.weight = "Need a number between 1 and 255"
         }
-        if (state.types.length === 0){
+        if (state.types.length === 0) {
             errors.types = "need a type"
-        } else if(state.types.length > 2){
+        } else if (state.types.length > 2) {
             errors.types = "Only 2 types are allowed"
-        } else if(state.types[0] === state.types[1]){
+        } else if (state.types[0] === state.types[1]) {
             errors.types = "Cant repeat the types"
         }
-        
+
         return errors;
     }
 
@@ -111,7 +112,7 @@ function CreatePokemon() {
         dispatch(getTypes());
     }, [dispatch])
 
-  
+
 
     return (
         <div>
@@ -126,7 +127,7 @@ function CreatePokemon() {
                     <span className='type'>
                         <div className='label-type'>
                             <label className='label'>Type</label>
-                            <select name='types'  onChange={e => handleTypes(e)}>
+                            <select name='types' onChange={e => handleTypes(e)}>
                                 {types.map((ele, index) => (
                                     <option key={index} value={ele.name}>
                                         {ele.name}
@@ -134,14 +135,14 @@ function CreatePokemon() {
                                 ))}
                             </select>
                         </div>
-                            {errors.types && (<p className="danger">{errors.types}</p>)}
+                        {errors.types && (<p className="danger">{errors.types}</p>)}
                         <div className='filter-option'>
-                        {state.types.map((t, index) => (
+                            {state.types.map((t, index) => (
                                 <span className='filter' key={index}>
                                     <span className='span-letters'>{t}</span>
                                     <button className='types-btn' onClick={e => handleDelete(t, e)}>x</button>
                                 </span>
-                        ))}
+                            ))}
                         </div>
                     </span>
 

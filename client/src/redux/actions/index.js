@@ -5,7 +5,7 @@ import axios from "axios";
 export const getPokemons = () => {
   return async function (dispatch) {
     dispatch({ type: "LOADING" })
-    var pokemons = await axios.get("http://localhost:3001/pokemon");
+    var pokemons = await axios.get("/pokemon");
 
     return dispatch({
       type: "GET_POKEMONS",
@@ -20,7 +20,7 @@ export const searchByName = (name) => {
       try {
         
         var pokemonSearch = await axios.get(
-          `http://localhost:3001/pokemon?name=${name}`
+          `/pokemon?name=${name}`
         );
           
         return dispatch({
@@ -35,8 +35,8 @@ export const searchByName = (name) => {
 
 export const getTypes = () => {
     return async function (dispatch) {
-      var types = await axios.get("http://localhost:3001/type");
-      dispatch({ type: "LOADING" })
+      //dispatch({ type: "LOADING" })
+      var types = await axios.get("/type");
       return dispatch({
         type: "GET_TYPES",
         payload: types.data,
@@ -49,7 +49,7 @@ export const getTypes = () => {
       try {
         dispatch({ type: "LOADING" })
         var pokemonDetail = await axios.get(
-          `http://localhost:3001/pokemon/${id}`
+          `/pokemon/${id}`
         );
         return dispatch({
           type: "GET_DETAIL",
@@ -65,13 +65,13 @@ export const getTypes = () => {
     return async function (dispatch) {
       try {
         const pokemonCreate = await axios.post(
-          "http://localhost:3001/pokemon/",
+          "/pokemon/",
           payload
         );
-  
+          alert("Pokemon creado con exito!")
         return pokemonCreate;
       } catch (error) {
-        alert("No se pudo crear pokemon faltan datos");
+        alert("No se pudo crear pokemon faltan datos o el nombre ya existe");
       }
     };
   }
@@ -104,12 +104,6 @@ export const getTypes = () => {
     }
   }
 
-  export const loading = (payload) => {
-    return {
-      type: "LOADING_TOGGLE",
-      payload,
-    }
-  }
 
   export function deletePokemon(id){
     return{
@@ -122,7 +116,7 @@ export const getTypes = () => {
     return async function(dispatch){
       dispatch(deletePokemon(id));
       try{
-        await axios.delete(`http://localhost:3001/pokemon/${id}`)
+        await axios.delete(`/pokemon/${id}`)
       }catch(error){
         console.log(error)
       }

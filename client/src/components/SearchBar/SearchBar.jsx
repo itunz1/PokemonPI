@@ -24,9 +24,7 @@ export default function SearchBar() {
         <div className='search-pos'>
             <input className='input-search' name='name' onChange={(e) => handleInputChange(e)} type='text'
                 placeholder='Ingresar nombre...' value={state} />
-            <button className='search-btn' onClick={(e) => handleSubmit(e)} type='submit'
-            >Buscar
-            </button>
+            <button className='search-btn' onClick={(e) => handleSubmit(e)} type='submit'>Buscar</button>
 
         </div>
     )

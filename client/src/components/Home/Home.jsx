@@ -23,8 +23,11 @@ function Home() {
 
   const dispatch = useDispatch();
   let allPokemons = useSelector((state) => state.pokemons);
+  let allPokemonss = useSelector((state) => state.allPokemons);
   const allPokemonsFilter = useSelector((state) => state.filter);
   const {loading} = useSelector(state => state)
+
+  console.log(allPokemonss)
 
 
   const [currentPage, setCurrentPage] = useState(1);
